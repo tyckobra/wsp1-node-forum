@@ -11,12 +11,12 @@ const pool = mysql.createPool({
 const promisePool = pool.promise();
 
 router.get('/', async function (req, res, next) {
-    const [rows,fields] = await promisePool.query("SELECT * FROM ja15forum");
-    res.json({ rows, fields });
-    // res.render('index.njk', {
-    //     message: 'Hello world! Now with a route file!',
-    //     title: 'Nunjucks hello world ',
-    // });
+    const [rows] = await promisePool.query("SELECT * FROM ja15forum");
+    // res.json({ rows });
+    res.render('index.njk', {
+        rows: rows,
+        title: 'Forum',
+    });
 });
 
 module.exports = router;

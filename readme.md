@@ -121,3 +121,34 @@ const pool = mysql.createPool({
 const promisePool = pool.promise();
 ```
 
+Hämta sedan alla rader. Skicka till kliente som json.
+Att hämta data från databasen är en asynkron process. Detta innebär att du måste använda dig av await eller .then() för att få tillbaka data. och funktionen måste vara async.
+
+```js
+router.get('/', async function (req, res, next) {
+    const [rows] = await promisePool.query("SELECT * FROM ja15forum");
+    res.json({ rows });
+});
+```
+
+Den data som hämtas från databasen är en array med objekt. Varje objekt är en rad i tabellen.
+Den data som hämtas från databasen kan du sedan använda i en template för att skriva ut datan med html.
+
+```js
+    res.render('index.njk', {
+        rows: rows,
+        title: 'Forum',
+    });
+```
+
+Uppdatera sedan index.njk
+
+```html
+<ul>
+    {% for row in rows %}
+        <li>
+            {{ row | dump }}
+        </li>
+    {% endfor %}
+</ul>
+```
