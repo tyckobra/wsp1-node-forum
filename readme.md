@@ -2,9 +2,17 @@
 
 ## Vad ska du göra?
 
-- [ ] Skapa ett startprojekt för en node server.
-- [ ] Installera express, mysql2, dotenv, nunjucks och nodemon.
-- [ ] Skapa databas och en tabell.
+- [ ] Skapa ett startprojekt för en node server
+- [ ] Installera express, mysql2, dotenv, nunjucks och nodemon
+- [ ] Skapa databas och en tabell
+- [ ] Förstå SQL frågor, datatyper och struktur
+- [ ] Grundläggande databasdesign och SQL frågor
+- [ ] Node och MySQL2
+- [ ] Dotenv och skydda känsliga uppgifter
+- [ ] Hämta data från databasen och visa den
+- [ ] Skapa en ny post i databasen med SQL INSERT
+- [ ] Göra detta med Node och skapa formulär
+- [ ] Databasedesign och normalisering
 
 ### Vad behöver du?
 

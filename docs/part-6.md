@@ -1,5 +1,8 @@
+# Del 6 - Databasdesign, relation och normalisering
 
-# users dilemmat och databasnormalisering
+- [ ] Databasedesign och normalisering
+
+## Users dilemmat och databasnormalisering
 
 Att spara författaren till varje post som en sträng är inte optimalt. Problemet som snabbt sker är att vi har massor med duplicerad data i databasen och det blir svårt att ändra data. Om vi vill ändra namnet på en användare så måste vi ändra det i alla inlägg som användaren har gjort.
 
@@ -29,8 +32,9 @@ ALTER TABLE ja15forum DROP COLUMN author;
 ```
 
 
-
 ## Skapa en ny post
+
+Eftersom du nu har en tabell för användare så behöver du skapa en användare på ett eller annat sätt innan du kan skapa ett inlägg.
 
 ```sql
 INSERT INTO ja15users (name) VALUES ('Jens');
@@ -38,11 +42,15 @@ INSERT INTO ja15users (name) VALUES ('Jens');
 
 ## Skapa en ny post med referens
 
+Sedan används denna användare för att skapa ett inlägg.
+
 ```sql
 INSERT INTO ja15forum (authorId, title, content) VALUES (1, 'Hej', 'Detta är ett test');
 ```
 
 ## Hämta alla inlägg med författare
+
+Med relation kan vi nu använda JOIN för att välja data från båda tabellerna.
 
 ```sql
 SELECT ja15forum.*, ja15users.name FROM ja15forum

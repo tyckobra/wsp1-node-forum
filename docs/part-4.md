@@ -1,9 +1,18 @@
+# Del 4 - Arbeta mot databasen med Node
 
-## Med node då
+Nu är det dags att koppla upp sig mot databasen från node. För att göra detta så behöver vi en databasklient. Det här exemplet kommer använda sig av [mysql2](https://www.npmjs.com/package/mysql2).
 
-För databaskopplingen från node kommer du använda dig av mysql2. Det är en modul som du installerat tidigare.
+- [ ] Node och MySQL2
+- [ ] Dotenv och skydda känsliga uppgifter
+- [ ] Hämta data från databasen och visa den
 
-För att komma åt databasinställningarna user/pass så kommer du att använda dotenv. Skapa en .env fil och lägg in dina inställningar där.
+## Logga in på databasen
+
+För att komma åt databasinställningarna user/pass så kommer du att använda dotenv. Detta är för att skydda uppgifterna från att hamna på GitHub. Det är viktigt att du inte lägger upp känsliga uppgifter på GitHub. Det är en vanlig misstag som kan leda till att dina uppgifter hamnar i fel händer.
+
+Du behöver paketet [dotenv](https://www.npmjs.com/package/dotenv).
+
+ Skapa en .env fil och lägg in dina inställningar där.
 
 ```bash
 touch .env
@@ -23,6 +32,10 @@ Läs in filen i din app.js
 require('dotenv').config();
 ```
 
+Vanliga är att göra en kopia av filen, `.env-example` som inte innehåller några känsliga uppgifter. Denna fil kan du lägga upp på GitHub. Detta så att det inte behöver vara ett mysterium vilka uppgifter din app kräver för att kunna köras.
+
+## Uppkoppling
+
 Nu är du redo för att koppla upp dig mot databasen.
 
 Vi kan göra detta i index routen för att testa / exempel.
@@ -38,7 +51,9 @@ const pool = mysql.createPool({
 const promisePool = pool.promise();
 ```
 
-Hämta sedan alla rader. Skicka till kliente som json.
+## Data
+
+Hämta sedan alla rader. Skicka till klienten som json.
 Att hämta data från databasen är en asynkron process. Detta innebär att du måste använda dig av await eller .then() för att få tillbaka data. och funktionen måste vara async.
 
 ```js

@@ -1,11 +1,16 @@
+# Del 5
 
-## Skapa en ny post
+- [ ] Skapa en ny post i databasen med SQL INSERT
+- [ ] Göra detta med Node och skapa formulär
+## Skapa en ny post, SQL
 
 Sql frågan för att skapa en ny post är
 
 ```sql
 INSERT INTO ja15forum (author, title, content) VALUES ('Jens', 'Hej', 'Detta är ett test');
 ```
+
+## Med node
 
 För att skapa en ny post så behöver vi en ny route. Skapa en ny route i routes/index.js
 
