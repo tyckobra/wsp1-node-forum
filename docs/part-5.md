@@ -22,6 +22,20 @@ router.post('/new', async function (req, res, next) {
 });
 ```
 
+För att kunna hantera indata i routen så behöver vi ett express paket för att läsa det. Installera `body-parser`
+
+```bash
+npm install body-parser
+```
+
+`body-parser` är ett middleware så därför måste du lägga till det i din `app.js` för att det ska fungera.
+
+`app.js`
+```js
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+```
+
 Skapa en ny template för att skriva ut formuläret. Skapa en ny fil i views/new.njk
 
 ```html

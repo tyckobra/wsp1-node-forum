@@ -66,11 +66,14 @@ router.get('/', async function (req, res, next) {
 Den data som hämtas från databasen är en array med objekt. Varje objekt är en rad i tabellen.
 Den data som hämtas från databasen kan du sedan använda i en template för att skriva ut datan med html.
 
+`res.render´ använder `res`, response objektet i en route. Det måste alltså skrivas innuti en route.
 ```js
-    res.render('index.njk', {
-        rows: rows,
-        title: 'Forum',
-    });
+...
+res.render('index.njk', {
+    rows: rows,
+    title: 'Forum',
+});
+...
 ```
 
 Uppdatera sedan index.njk
