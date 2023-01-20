@@ -8,9 +8,7 @@ CREATE TABLE ja15comments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     authorId INT NOT NULL,
     postId INT NOT NULL,
-    content TEXT NOT NULL,
-    FOREIGN KEY (authorId) REFERENCES ja15users(id),
-    FOREIGN KEY (postId) REFERENCES ja15forum(id)
+    content TEXT NOT NULL
 );
 ```
 
