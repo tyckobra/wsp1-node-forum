@@ -26,7 +26,7 @@ För att inspektera tabellen med sql så kan du använda
 DESCRIBE ja15forum;
 ```
 
-![Table image](docs/assets/describe-table.png)
+![Table image](assets/describe-table.png)
 
 Tabellen för forumet är nu klar och nästa steg är att fylla den med data.
 
