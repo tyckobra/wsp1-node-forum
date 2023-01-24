@@ -1,4 +1,4 @@
-# Del 7 - Databasdesign, relation och normalisering
+# Del 7 - Intermission, glöm inte din frontend
 
 - [ ] Snygga till och få allt att fungera
 
@@ -18,5 +18,11 @@ Nu är det dock dags att köra lite repetition från tidigare delar i kursen.
     - Färger
     - Typsnitt
     - Bilder
+
+## Men min css laddas ju inte
+
+Kolla sass biten från förra uppgiften.
+Jag har en public mapp men... [static files](https://expressjs.com/en/starter/static-files.html)
+
 
 [Del 8](part-8.md)
