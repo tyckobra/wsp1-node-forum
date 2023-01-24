@@ -1,4 +1,4 @@
-# Del 6 - Databasdesign, relation och normalisering
+# Del 7 - Databasdesign, relation och normalisering
 
 - [ ] Snygga till och få allt att fungera
 
