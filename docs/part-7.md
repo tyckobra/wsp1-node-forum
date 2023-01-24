@@ -1,4 +1,4 @@
-# Del 6 - Databasdesign, relation och normalisering
+# Del 7 - Intermission, glöm inte din frontend
 
 - [ ] Snygga till och få allt att fungera
 
@@ -29,6 +29,11 @@ Börja [här](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
 Vill du vara mer fancy kan du testa [Tailwind](https://tailwindcss.com/).
 
 Kaj tycker ni kan prova [Pico](https://picocss.com/).
+
+## Men min css laddas ju inte
+
+Kolla sass biten från förra uppgiften.
+Jag har en public mapp men... [static files](https://expressjs.com/en/starter/static-files.html)
 
 
 [Del 8](part-8.md)
