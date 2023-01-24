@@ -1,46 +1,79 @@
+# Del 8 - Författare
 
-# Lägg till kommentarer
+- [ ] Skapa en ny post i databasen med SQL INSERT
+- [ ] Göra detta med Node
+## Hämta alla inlägg med författare i node
 
-- [ ] Skapa en ny tabell för kommentarer
-- [ ] Skapa en ny post
-- [ ] Hämta alla kommentarer
-- [ ] Förstå JOINS i SQL och hur du kan använda dem för att hämta data från flera tabeller
-- [ ] Implementera kommentarer i Node
+Uppdatera SQL frågan i index routen. Du behöver här läsa in data från två tabeller. Du kan läsa in data från två tabeller genom att använda `JOIN` i din SQL fråga. Frågan finns i [Del 6](part-6.md).
 
-## Skapa en ny tabell för kommentarer
+## Posta nya inlägg med författare
 
-```sql
-CREATE TABLE DITT_ID_comments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    authorId INT NOT NULL,
-    postId INT NOT NULL,
-    content TEXT NOT NULL
-);
+Uppdatera SQL frågan i new routen.
+
+Ett första steg är att hårdkoda det för att använda user 1.
+
+```js
+router.post('/new', async function (req, res, next) {
+    const { author, title, content } = req.body;
+    const [rows] = await promisePool.query('INSERT INTO DITT_TABELL_NAMN (author, title, content) VALUES (?, ?, ?)', [1, title, content]);
+    res.redirect('/');
+});
 ```
 
-## Skapa en ny post
+Om du ska skapa en ny författare i frågan så behöver du uppdatera så att två frågor skickas till databasen. Du kan göra detta genom att använda `promisePool.query` två gånger och lägga till data i `users` tabellen först.
 
-Detta använder post 1 och user 1. Se till att de finns i din databas.
+`routes/index.js`
+```js
+router.post('/new', async function (req, res, next) {
+    const { author, title, content } = req.body;
 
-```sql
-INSERT INTO DITT_ID_comments (authorId, postId, content) VALUES (1, 1, 'Detta är en kommentar');
+    // Skapa en ny författare om den inte finns men du behöver kontrollera om användare finns!
+    let user = await promisePool.query('SELECT * FROM din_tabell WHERE name = ?', [author]);
+    if (!user) {
+        user = await promisePool.query('INSERT INTO din_tabell (name) VALUES (?)', [author]);
+    }
+
+    // user.insertId bör innehålla det nya ID:t för författaren
+
+    const userId = user.insertId || user[0].id;
+
+    // kör frågan för att skapa ett nytt inlägg
+    const [rows] = await promisePool.query('INSERT INTO din_tabell (author, title, content) VALUES (?, ?, ?)', [userId, title, content]);
+    res.redirect('/'); // den här raden kan vara bra att kommentera ut för felsökning, du kan då använda tex. res.json({rows}) för att se vad som skickas tillbaka från databasen
+});
 ```
 
-## Hämta alla kommentarer
+Det blev en mastig bit. **Se till att du kan starta och köra din server!**
 
-När du hämtar kommentarer så vill du också ha med namnet på författaren. Detta gör du med en JOIN.
+## Uppdatera formuläret
 
-Du behöver även ange vilken post du vill hämta kommentarer för.
+Uppdatera formuläret i new.njk så att författaren är en dropdown som läser in alla användare från databasen.
 
-```sql
-SELECT comments-tabellen.*, users-tabellen.name 
-FROM comments-tabellen
-JOIN users-tabellen ON comments-tabellen.authorId = users-tabellen.id 
-WHERE comments-tabellen.postId = 1;
+`views/new.njk`
+```html
+<label for="author">Författare</label>
+<select name="author" id="author">
+    {% for user in users %}
+        <option value="{{ user.id }}">{{ user.name }}</option>
+    {% endfor %}
+</select>
 ```
 
-## Node då?
+Uppdatera routen för att hämta alla användare.
 
-Du behöver skapa en ny route för enskilda poster som hämtar kommentarer för den posten.
+`routes/index.js`
+```js
+router.get('/new', async function (req, res, next) {
+    const [users] = await promisePool.query('SELECT * FROM din_tabell');
+    res.render('new.njk', {
+        title: 'Nytt inlägg',
+        users,
+    });
+});
+```
 
-Du behöver skapa ett nytt formulär och route för att kunna skapa en ny kommentar till en post.
+Whew, det blev en del.
+
+**Starta din server och se till att allt fungerar!**
+
+[Del 9](part-9.md)
