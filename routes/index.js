@@ -14,6 +14,10 @@ const promisePool = pool.promise();
 router.get('/', async function (req, res, next) {
     const [rows] = await promisePool.query("SELECT * FROM tb02forum");
   //  res.json({ rows });
+    res.render('index.njk', {
+    rows: rows,
+    title: 'Forum',
+});
 });
 
 router.get('/new', async function (req, res, next) {
