@@ -1,0 +1,8 @@
+2023-01-27 
+Commit: Scss
+
+Höll på med css och navigering, tog lite hjälp från tidigare
+filer som wsp1-node-intro. Det gick väll inte som tänkt, ingen
+css dyker upp och bilen jag la in syns inte.
+Jag skapade en gringos.js och gringos.njk för att jag ville få
+informationen på olika sidor istället för samma.

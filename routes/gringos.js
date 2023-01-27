@@ -11,15 +11,13 @@ const pool = mysql.createPool({
 });
 const promisePool = pool.promise();
 
-router.get('/', async function (req, res, next) {
-    const [rows] = await promisePool.query("SELECT * FROM tb02forum");
-  //  res.json({ rows });
-});
-
-router.get('/new', async function (req, res, next) {
-    res.render('new.njk', {
-        title: 'Nytt inlägg',
-        users,
+router.post('/new', async function (req, res, next) {
+    const { author, title, content } = req.body;
+    const [rows] = await promisePool.query("INSERT INTO tb02forum (author, title, content) VALUES (?, ?, ?)", [author, title, content]);
+    res.redirect('/');
+    res.render('gringos.njk', {
+        rows: rows,
+        title: 'Gringos',
     });
 });
 
