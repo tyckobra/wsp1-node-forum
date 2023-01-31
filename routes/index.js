@@ -18,6 +18,7 @@ router.get('/', async function (req, res, next) {
     rows: rows,
     title: 'Forum',
 });
+
 });
 
 router.get('/new', async function (req, res, next) {

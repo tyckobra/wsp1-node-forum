@@ -30,7 +30,7 @@ dd {
 which suggests default styling will be removed 
 🟣 Selector updated to reduce specificity
 */
-:where(ul, ol):where([role="list"]) {
+:where(ul, ol):where([role=list]) {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -102,30 +102,39 @@ select {
   html:focus-within {
     scroll-behavior: auto;
   }
-
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
 }
+body {
+  background-color: cornsilk;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .container {
   width: min(80ch, 100vw - 2rem);
   margin-inline: auto;
 }
 
 .navbar {
-  background-color: lavenderblush;
+  background-color: aquamarine;
+  height: 3rem;
+  width: 4rem;
+  text-align: center;
 }
 .navbar__inner {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  min-height: 4rem;
+  height: 10rem;
 }
 .navbar__button {
   background-color: transparent;
@@ -155,8 +164,7 @@ select {
 }
 
 main {
-  margin-top: 2rem;
-  color: red;
+  margin-top: 3rem;
 }
 
 .hero {
@@ -182,8 +190,10 @@ main {
 }
 
 footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  background-color: aquamarine;
+  text-align: center;
+  width: 20rem;
+  margin-top: 1rem;
 }
 
 .show {
@@ -193,7 +203,5 @@ footer {
 .hide {
   display: none;
 }
-
-
 
 /*# sourceMappingURL=style.css.map */

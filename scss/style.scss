@@ -1,7 +1,10 @@
 @use 'reset';
 
 body {
-    background-color: aqua;
+    background-color:cornsilk;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container {
@@ -10,13 +13,16 @@ body {
 }
 
 .navbar {
-    background-color: lavenderblush;
+    background-color:aquamarine;
+    height: 3rem;
+    width: 4rem;
+    text-align: center;
     &__inner {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        min-height: 4rem;
+        height: 10rem;
 
     }
     &__button {
@@ -47,7 +53,7 @@ body {
     }
 }
 main {
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .hero {
@@ -75,8 +81,10 @@ main {
 }
 
 footer {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    background-color: aquamarine;
+    text-align: center;
+    width: 20rem;
+    margin-top: 1rem;
 }
 
 .show {

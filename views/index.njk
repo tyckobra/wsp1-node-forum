@@ -1,15 +1,15 @@
 {% extends "layout.njk" %}
 {% block  content %}
 <ul>
-    <img src="/images/flower1.png">
+    <img src="/images/flower1.png" width="550px" height="500px">
 
     {% for row in rows %}
-        <li>
-            {{ row.id }} {{ row.authorId }} <h10>Tyckobra</h10>
+        <section>
+            {{ row.id }} {{ row.authorId }} {{ row.author }}
             <h1>{{ row.title }}</h1> <p>{{ row.content }}</p> 
             <p>Created {{ row.createdAt }}</p>
             <p>{{ row.name }}</p>
-        </li>
+        </section>
     {% endfor %}
 </ul>
 {% endblock %}
